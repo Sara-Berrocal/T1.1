@@ -13,7 +13,7 @@ import javax.swing.SwingConstants;
 public class frm04 extends JFrame {
     private static final long serialVersionUID = 1L;
     JTextField txtPies, txtPulgadas;
-    JLabel lblTEstaturaMetros;
+    JLabel lblEstaturaMetros;
 
 
     public static void main(String[] args) {
