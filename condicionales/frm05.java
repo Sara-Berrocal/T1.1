@@ -58,6 +58,24 @@ public class frm05 extends JFrame {
     }
 
     protected void btnCalcular_actionPerformed(){
-        
+        String numeroStr = txtNumero.getText();
+
+        if (numeroStr.length() != 4 || !numeroStr.matches("\\d+")){
+            txtResultado.setText("Numero invalido");
+            return;
+        }
+
+        char mayor = numeroStr.charAt(0);
+        char menor = numeroStr.charAt(0);
+
+        dor(int i = 1; i < numeroStr.length(); i++){
+            char c = numeroStr.charAt(i);
+            if (c > mayor) mayor = c;
+            if (c < menor) menor = c,
+        }
+
+        int mayorNumero = (mayor - '0') * 10 + (menor - '0');
+
+        txtResultado.setText(String.valueOf(mayorNumero));
     } 
 }

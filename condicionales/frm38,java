@@ -1,0 +1,101 @@
+package condicionales;
+
+import java.awt.EventQueue;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+public class frm38 extends JFrame {
+    private static final long serialVersionUID = 1L;
+    JTextField txtMes, txtAño, txtDias, txtNombreMes;
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+                frm38 frame = new frm38();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public frm38() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(0, 0, 300, 250);
+        setLayout(null);
+        setLocationRelativeTo(null);
+
+        JLabel lblMes = new JLabel("Mes (1-12):");
+        lblMes.setBounds(20, 20, 100, 30);
+        getContentPane().add(lblMes);
+
+        txtMes = new JTextField();
+        txtMes.setBounds(130, 20, 50, 30);
+        txtMes.setHorizontalAlignment(SwingConstants.RIGHT);
+        getContentPane().add(txtMes);
+
+        JLabel lblAñio = new JLabel("Año:");
+        lblAño.setBounds(20, 60, 100, 30);
+        getContentPane().add(lblAño);
+
+        txtAño = new JTextField();
+        txtAño.setBounds(130, 60, 50, 30);
+        txtAño.setHorizontalAlignment(SwingConstants.RIGHT);
+        getContentPane().add(txtAño);
+
+        JButton btnCalcular = new JButton("Calcular");
+        btnCalcular.setBounds(20, 100, 160, 30);
+        btnCalcular.addActionListener(e -> btnCalcular_actionPerformed());
+        getContentPane().add(btnCalcular);
+
+        txtDias = new JTextField();
+        txtDias.setBounds(20, 140, 240, 30);
+        txtDias.setEditable(false);
+        getContentPane().add(txtDias);
+
+        txtNombreMes = new JTextField();
+        txtNombreMes.setBounds(20, 180, 240, 30);
+        txtNombreMes.setEditable(false);
+        getContentPane().add(txtNombreMes);
+    }
+
+    protected void btnCalcular_actionPerformed() {
+        int mes = Integer.parseInt(txtMes.getText());
+        int año = Integer.parseInt(txtAño.getText());
+
+        int dias = 0;
+        String nombreMes = "";
+
+        switch (mes) {
+            case 1: nombreMes = "Enero"; dias = 31; break;
+            case 2: 
+                if ((año % 4 == 0 && año % 100 != 0) || (año % 400 == 0)) {
+                    dias = 29; 
+                } else {
+                    dias = 28; 
+                }
+                nombreMes = "Febrero";
+                break;
+            case 3: nombreMes = "Marzo"; dias = 31; break;
+            case 4: nombreMes = "Abril"; dias = 30; break;
+            case 5: nombreMes = "Mayo"; dias = 31; break;
+            case 6: nombreMes = "Junio"; dias = 30; break;
+            case 7: nombreMes = "Julio"; dias = 31; break;
+            case 8: nombreMes = "Agosto"; dias = 31; break;
+            case 9: nombreMes = "Septiembre"; dias = 30; break;
+            case 10: nombreMes = "Octubre"; dias = 31; break;
+            case 11: nombreMes = "Noviembre"; dias = 30; break;
+            case 12: nombreMes = "Diciembre"; dias = 31; break;
+            default: 
+                txtDias.setText("Mes inválido");
+                txtNombreMes.setText("");
+                return;
+        }
+
+        txtDias.setText("Días: " + dias);
+        txtNombreMes.setText("Mes: " + nombreMes);
+    }
+}
